@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" type="text/css" href="css/style.css"/>
+  </head>
+
+  <body>
+	<header>
+      <h1>Selecione uma opção de cada:</h1>
+		
+	</header>
+	<form action="page2.html">
+	  <main>
+		<div class="container">
+	      <h3>As Raças:</h3>
+		  <div class="menu">
+		    <button class="menuButton race" id="humano" type="button" onclick="toggleRace(this, 'humano')">
+			  Humano
+		      <img alt="Humano" src="image/human-icon.svg" />
+		    </button>
+				
+		    <button class="menuButton race" id="anao" type="button" onclick="toggleRace(this, 'anao')">
+			  Anão
+			  <img alt="Anão" src="image/dwarf-icon.svg" />
+		    </button>
+				
+		    <button class="menuButton race" id="elfo" type="button" onclick="toggleRace(this, 'elfo')">
+			  Elfo
+			  <img alt="Elfo" src="image/elf-icon.svg" />
+		    </button>
+				
+		    <button class="menuButton race" id="halfling" type="button" onclick="toggleRace(this, 'halfling')">
+			  Halfling
+			  <img alt="Halfling" src="image/halfling-icon.svg" />
+		    </button>
+				
+		    <button class="menuButton race" id="draconato" type="button" onclick="toggleRace(this, 'draconato')">
+			  Draconato
+			  <img alt="Dragonborn" src="image/dragonborn-icon.svg" />
+		    </button>
+				
+		    <button class="menuButton race" id="gnomo" type="button" onclick="toggleRace(this, 'gnomo')">
+			  Gnomo
+			  <img alt="Gnomo" src="image/gnome-icon.svg" />
+		    </button>
+				
+		    <button class="menuButton race" id="tiefling" type="button" onclick="toggleRace(this, 'tiefling')">
+			  Tiefling
+			  <img alt="Tiefling" src="image/tiefling-icon.svg" />
+		    </button>
+			
+		    <div class="description">
+			  <h4 id="raceTitle">Selecione uma raça</h4>
+			  <p class="raceClassAtribute" id="raceAtribute"></p>
+			  <p class="raceClassDescription" id="raceDescription"></p>
+			  <input id="finalrace" name="finalrace" hidden required />
+		    </div>
+		  </div>
+				
+		</div>
+			
+		<div class= "container">
+				
+		  <h3>As Classes</h3>
+		  <div class="menu">
+			<button class="menuButton classe" type="button" onclick="toggleClasse(this, 'barbaro')">
+		      Bárbaro
+			  <img alt="Bárbaro" src="image/Barbaro_Badge_Icon.png" />
+			</button>
+			<button class="menuButton classe" type="button" onclick="toggleClasse(this, 'bardo')">
+			  Bardo
+			  <img alt="Bardo" src="image/Bardo_Badge_Icon.png" />
+			</button>
+			<button class="menuButton classe" type="button" onclick="toggleClasse(this, 'clerigo')">
+			  Clérigo
+			  <img alt="Clérigo" src="image/Clerigo_Badge_Icon.png" />
+			</button>
+			<button class="menuButton classe" type="button" onclick="toggleClasse(this, 'druida')">
+			  Druida
+			  <img alt="Clérigo" src="image/Druida_Badge_Icon.png" />
+			</button>
+
+			<button class="menuButton classe" type="button" onclick="toggleClasse(this, 'guerreiro')">
+			  Guerreiro
+			  <img alt="guerreiro" src="image/Guerreiro_Badge_Icon.png" />
+			</button>
+			<button class="menuButton classe" type="button" onclick="toggleClasse(this, 'ladino')">
+			  Ladino
+			  <img alt="Ladino" src="image/Ladino_Badge_Icon.png" />
+			</button>
+			<button class="menuButton classe" type="button" onclick="toggleClasse(this, 'monge')">
+			  Monge
+			  <img alt="Monge" src="image/Monge_Badge_Icon.png" />
+			</button>
+			<button class="menuButton classe" type="button" onclick="toggleClasse(this, 'paladino')">
+			  Paladino
+			  <img alt="Paladino" src="image/Paladino_Badge_Icon.png" />
+			</button>
+			<button class="menuButton classe" type="button" onclick="toggleClasse(this, 'mago')">
+			  Mago
+			  <img alt="Mago" src="image/Mago_Badge_Icon.png" />
+			</button>
+			<div class="description">
+			  <h4 id="classeTitle">Selecione uma classe</h4>
+			  <p class="raceClassAtribute" id="classeAtribute"><p>
+			  <p class="raceClassDescription" id="classeDescription"></p>
+			  <input id="finalclasse" name="finalclasse" hidden required />
+			  
+			</div>
+		  </div>
+		</div>
+		<div class= "container">
+		  <h3>Detalhes</h3>
+		  <div id="detalhes">
+		    <p>Distribua seus atributos</p>
+		    <div class="atributos">
+						
+			  <div class="atributo"> 
+				<img src="image/atributo.svg" />
+				FOR
+				<p id="modFOR">-5</p>
+				<input class="campoatributo" id="FOR" name="FOR" value="0" required />
+			  </div>
+					
+			  <div class="atributo"> 
+				<img src="image/atributo.svg" />
+				DES
+				<p>-5</p>
+				<input class="campoatributo" id="DES" name="DES" value="0" required />
+			  </div>
+			  <div class="atributo"> 
+				<img src="image/atributo.svg" />
+				CON
+				<p>-5</p>
+				<input class="campoatributo" id="CON" name="CON" value="0" required />
+			  </div>
+						
+			  <div class="atributo"> 
+				<img src="image/atributo.svg" />
+				INT
+				<p>-5</p>
+				<input class="campoatributo" id="INT" name="INT" value="0" required />
+			  </div>
+			  <div class="atributo"> 
+				<img src="image/atributo.svg" />
+				SAB
+				<p>-5</p>
+				<input class="campoatributo" id="SAB" name="SAB" value="0" required />
+			  </div>
+			  <div class="atributo"> 
+				<img src="image/atributo.svg" />
+			    CAR
+				<p>-5</p>
+				<input class="campoatributo" id="CAR" name="CAR" value="0" required />
+			  </div>
+			</div>
+				
+			<label for="pericias">Perícias</label>
+			<textarea  id="pericias" name="pericias" required></textarea>
+					
+			<label for="outros">Outras Proficiências</label>
+			<textarea  id="outros" name="outros" required ></textarea>
+					
+			<label for="caracteristicas">Características</label>
+			<textarea id="caracteristicas" name="caracteristicas" required></textarea>
+		  </div>
+		</div>
+	  </main>
+	  <div class="horizontalZone">
+		<div id="nameInput">
+	      <div id="nameContainer">
+			<h4>Nome do Personagem</h4>
+		  </div>
+		  <input id="nomeDoPersonagem" name="nomeDoPersonagem" type ="text" placeholder="Digite o Nome do Personagem" autofocus required />
+		  <div class="confirmCancel">
+			<button class="
+			cancel">
+		      Limpar tudo
+			</button>
+			<button class="confirm" onclick="if($('form').valid()){console.log("")}">
+			  Pronto
+			</button>
+		  </div>
+		</div>
+	  </div>
+	</form>
+	<script src="js/jquery-3.7.1.min.js" ></script>
+	<script src="js/data.js"></script>
+	<script src="js/scripts.js"></script>
+  </body>
+</html>

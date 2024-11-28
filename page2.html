@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+	<style>
+		@media print {
+		  .no-print {
+		    display: none;
+		  }
+		}
+	</style>
+  </head>
+  
+  <body >
+	  <h1 id="criação">Personagem criado com sucesso!</h1>
+      <div style="display: flex; justify-content: center;">
+		 
+		<div class="container" style="height: 90%; padding: 0 14px 0 14px">
+		  <h3 id="nome">Nome</h3>
+		  <img id="badge" src="" style="height: 100px; width: 100px" />
+		  
+		  <p id="racaeclasse" style="font-style: italic">Raça e Classe </p>
+		  
+		  
+		  <div class="atributos">				
+			  <div class="atributo"> 
+				<img src="image/atributo.svg" />
+				FOR
+				<p id="modFOR">-5</p>
+				<input class="campoatributo" id="FOR" name="FOR" value="0" disabled />
+			  </div>
+					
+			  <div class="atributo"> 
+				<img src="image/atributo.svg" />
+				DES
+				<p id="modDES">-5</p>
+				<input class="campoatributo" id="DES" name="DES" value="0" disabled />
+			  </div>
+			  <div class="atributo"> 
+				<img src="image/atributo.svg" />
+				CON
+				<p id="modCON">-5</p>
+				<input class="campoatributo" id="CON" name="CON" value="0" disabled />
+			  </div>
+						
+			  <div class="atributo"> 
+				<img src="image/atributo.svg" />
+				INT
+				<p id="modINT">-5</p>
+				<input class="campoatributo" id="INT" name="INT" value="0" disabled />
+			  </div>
+			  <div class="atributo"> 
+				<img src="image/atributo.svg" />
+				SAB
+				<p id="modSAB">-5</p>
+				<input class="campoatributo" id="SAB" name="SAB" value="0" disabled />
+			  </div>
+			  <div class="atributo"> 
+				<img src="image/atributo.svg" />
+			    CAR
+				<p id="modCAR">-5</p>
+				<input class="campoatributo" id="CAR" name="CAR" value="0" disabled />
+			  </div>
+			</div>
+		  <p id="pericias" class="finalDesc">Perícias:  </p>
+		  <p id="outros" class="finalDesc">Proficiências:  </p>
+		  <p id="caracteristicas" class="finalDesc">Características:  </p>
+		  <p id="racadescricao" class="finalDesc"> </p>
+		  <p id="classedescricao" class="finalDesc"> </p>
+		  
+		  <div class="no-print">
+			<button class="cancel" id="download" style="margin: 18px"> Json </button>
+			<button class="confirm" id="imprimir" style="margin: 18px"> Imprimir </button>
+
+		  </div>
+		  
+		 
+			
+		</div>
+	  </div>
+	<script src="js/jquery-3.7.1.min.js"></script>
+	<script src="js/data.js"></script>
+
+	<script>
+	  const data = new URL(window.location.href);
+	  const NOME = data.searchParams.get("nomeDoPersonagem");
+	  
+	  const RACE = data.searchParams.get("finalrace");
+	  const CLASSE = data.searchParams.get("finalclasse");
+	  const FOR = data.searchParams.get("FOR");
+	  const DES = data.searchParams.get("DES");
+	  const CON = data.searchParams.get("CON");
+	  const INT = data.searchParams.get("INT");
+	  const SAB = data.searchParams.get("SAB");
+	  const CAR = data.searchParams.get("CAR");
+	  const PERICIAS = data.searchParams.get("pericias");
+	  const OUTROS = data.searchParams.get("outros");
+	  const CARACTERISTICAS = data.searchParams.get("caracteristicas");
+	  
+	  $("#nome").html(NOME);
+	  
+	  $("#racaeclasse").html(`${RACES[RACE].nome} ${CLASSES[CLASSE].nome} Nível 1`)
+	  
+	  $("#FOR").attr("value", FOR);
+	  $("#modFOR").html(Math.floor((FOR-10)/2));
+	  $("#DES").attr("value", DES);
+	  $("#modDES").html(Math.floor((DES-10)/2));
+	  $("#CON").attr("value", CON);
+	  $("#modCON").html(Math.floor((CON-10)/2));
+	  $("#INT").attr("value", INT);
+	  $("#modINT").html(Math.floor((INT-10)/2));
+	  $("#SAB").attr("value", SAB);
+	  $("#modSAB").html(Math.floor((SAB-10)/2));
+	  $("#CAR").attr("value", CAR);
+	  $("#modCAR").html(Math.floor((CAR-10)/2));
+	  
+	  $("#pericias").html(`<strong>Perícias:</strong> ${PERICIAS}`);
+	  $("#outros").html(`<strong>Proficiências:</strong> ${OUTROS}`);
+	  $("#caracteristicas").html(`<strong>Características</strong> ${CARACTERISTICAS}`);
+	  
+	  $("#racadescricao").html(`<strong>${RACES[RACE].nome}:</strong> ${RACES[RACE].descricao}`);
+	  $("#classedescricao").html(`<strong>${CLASSES[CLASSE].nome}:</strong> ${CLASSES[CLASSE].descricao}`);
+	  
+	  $("#download").click(function(){
+	    const objBlob = {
+		  race: RACE,
+		  classe: CLASSE,
+		  forca: FOR,
+		  modFor : Math.floor((FOR-10)/2),
+		  destreza : DES,
+		  modDes : Math.floor((DES-10)/2),
+		  constituicao : CON,
+		  modCon : Math.floor((CON-10)/2),
+		  inteligencia : INT,
+		  modInt : Math.floor((INT-10)/2),
+		  sabedoria : SAB,
+		  modSab : Math.floor((SAB-10)/2),  
+		  carisma : CAR,
+		  modCar : Math.floor((CAR-10)/2),
+		  pericias : PERICIAS,
+		  outros : OUTROS,
+		  caracteristicas : CARACTERISTICAS
+		};
+		const newBlob = new Blob([JSON.stringify(objBlob, null, 2)], { type: "text/plain", charset: "UTF-8" })
+		const urlResult = window.URL.createObjectURL(newBlob);
+		window.open(urlResult, "_blank");
+	  })
+	  
+	  $("#imprimir").click(function(){
+		window.print();
+	  })
+	  
+	  $("#badge").attr("src", `image/${CLASSES[CLASSE].nome}_Badge_Icon.png`)
+
+	  
+	  
+	  
+	</script>
+  </body>
+</html>
